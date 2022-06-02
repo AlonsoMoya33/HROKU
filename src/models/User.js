@@ -7,11 +7,14 @@ const User = new Schema({
     last_name: String,
     email: {
         type: String,
-        unique: true
+        unique: true,
+        required: true,
+        validate: [validators.notEmpty, 'email is empty']
     },
     password: {
         type: String,
-        unique: true
+        required: true,
+        validate: [validators.notEmpty, 'password is empty']
     },
     role: [{
         ref: "Role",
